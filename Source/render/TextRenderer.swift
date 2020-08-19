@@ -143,7 +143,7 @@ class TextRenderer: NodeRenderer {
         case Baseline.alphabetic:
             baselineOffset = font.ascender
         case Baseline.bottom:
-            baselineOffset = font.ascender - font.descender
+            baselineOffset = font.ascender
         case Baseline.mid:
             baselineOffset = (font.ascender - font.descender) / 2
         default:
