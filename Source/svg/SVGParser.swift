@@ -193,12 +193,8 @@ open class SVGParser {
 
     fileprivate func parseSvg(_ children: [XMLIndexer]) throws {
         try children.forEach { child in
-            if let element = child.element {
-                if element.name == "svg" {
-                    try parseSvg(child.children)
-                } else if let node = try parseNode(child) {
-                    self.nodes.append(node)
-                }
+            if let node = try parseNode(child) {
+                self.nodes.append(node)
             }
         }
     }
@@ -263,7 +259,7 @@ open class SVGParser {
                 return .none
             }
             switch element.name {
-            case "g":
+            case "g", "svg":
                 result = try parseGroup(node, style: style)
             case "style", "defs":
                 // do nothing - it was parsed on first iteration
